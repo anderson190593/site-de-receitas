@@ -1,0 +1,88 @@
+/* Importa uma fonte elegante do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa; /* Um cinza bem claro */
+    color: #343a40; /* Texto escuro para contraste */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: #495057; /* Um tom de cinza mais escuro para títulos */
+}
+
+/* Centraliza o título principal e dá um espaçamento extra */
+h1.text-center.mb-5 {
+    font-size: 3.5rem;
+    margin-bottom: 3rem !important;
+    color: #a87b5f; /* Um tom terroso para o título */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização dos Cards de Receita */
+.card {
+    border: none; /* Remove a borda padrão do Bootstrap */
+    border-radius: 15px; /* Bordas mais arredondadas */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden; /* Garante que a imagem arredondada não vaze */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* Efeito de 'levantar' mais pronunciado */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
+}
+
+.card-img-top {
+    height: 220px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    color: #6c757d; /* Cor mais suave para o título da receita */
+    margin-bottom: 1rem;
+}
+
+.card-text strong {
+    color: #495057; /* Cor do texto forte */
+}
+
+ul.list-unstyled li {
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+ul.list-unstyled li i {
+    color: #a87b5f; /* Cor do ícone de bolinha */
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+/* Animação de entrada para os cards */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.6s ease-out forwards;
+    /* Delay para cada card, para um efeito cascata */
+}
+
+/* Você precisaria de JavaScript ou um gerador de CSS para aplicar delays individuais */
+/* Por enquanto, essa classe aplica a todos, mas é um bom ponto para expandir */
