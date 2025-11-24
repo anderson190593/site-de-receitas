@@ -1,88 +1,120 @@
-/* Importa uma fonte elegante do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap');
+/* css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
+
+:root {
+    --bg-dark: #0f172a;
+    --accent-color: #38bdf8; /* Azul neon */
+    --accent-glow: rgba(56, 189, 248, 0.5);
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
-    background-color: #f8f9fa; /* Um cinza bem claro */
-    color: #343a40; /* Texto escuro para contraste */
+    font-family: 'Outfit', sans-serif; /* Fonte mais moderna/tech */
+    background-color: var(--bg-dark);
+    /* Um gradiente sutil de fundo para dar profundidade */
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: #f1f5f9;
+    min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    color: #495057; /* Um tom de cinza mais escuro para títulos */
-}
-
-/* Centraliza o título principal e dá um espaçamento extra */
-h1.text-center.mb-5 {
+/* Títulos */
+h1.display-title {
+    font-weight: 700;
     font-size: 3.5rem;
-    margin-bottom: 3rem !important;
-    color: #a87b5f; /* Um tom terroso para o título */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
 }
 
-/* Estilização dos Cards de Receita */
-.card {
-    border: none; /* Remove a borda padrão do Bootstrap */
-    border-radius: 15px; /* Bordas mais arredondadas */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    overflow: hidden; /* Garante que a imagem arredondada não vaze */
+/* Glassmorphism Card - O segredo do visual moderno */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px); /* O desfoque atrás do vidro */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover {
-    transform: translateY(-8px); /* Efeito de 'levantar' mais pronunciado */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-glow); /* Brilho neon ao passar o mouse */
+}
+
+/* Imagens com efeito de corte */
+.card-img-wrapper {
+    overflow: hidden;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    height: 200px;
+    position: relative;
+}
+
+.card-img-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, var(--glass-bg), transparent);
 }
 
 .card-img-top {
-    height: 220px; /* Altura fixa para as imagens */
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
 }
 
-.card-body {
-    padding: 1.5rem;
+.glass-card:hover .card-img-top {
+    transform: scale(1.1);
 }
 
-.card-title {
-    font-size: 1.8rem;
-    color: #6c757d; /* Cor mais suave para o título da receita */
-    margin-bottom: 1rem;
+/* Input de Busca Estilizado */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.card-text strong {
-    color: #495057; /* Cor do texto forte */
+.glass-input {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
 }
 
-ul.list-unstyled li {
-    margin-bottom: 0.3rem;
-    font-size: 0.95rem;
-    color: #555;
+.glass-input:focus {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    color: white;
 }
 
-ul.list-unstyled li i {
-    color: #a87b5f; /* Cor do ícone de bolinha */
-    font-size: 1.2rem;
-    vertical-align: middle;
+.glass-input::placeholder {
+    color: #64748b;
 }
 
-/* Animação de entrada para os cards */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Botões */
+.btn-outline-light {
+    border-radius: 12px;
+    border-color: rgba(255,255,255,0.2);
 }
 
-.card {
-    animation: fadeIn 0.6s ease-out forwards;
-    /* Delay para cada card, para um efeito cascata */
+.btn-outline-light:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--bg-dark);
+    font-weight: bold;
 }
-
-/* Você precisaria de JavaScript ou um gerador de CSS para aplicar delays individuais */
-/* Por enquanto, essa classe aplica a todos, mas é um bom ponto para expandir */
