@@ -34,5 +34,21 @@ export const receitas = [
         instrucoes: "Misture todos os ingredientes até obter uma massa homogênea. Modele e asse.",
         imagem: "images/pao-de-queijo.png",
         categoria: "Lanche"
+    },
+    {
+        id: 5,
+        nome: "Feijoada Completa",
+        ingredientes: ["Feijão preto", "Carne seca", "Costela de porco", "Linguiça", "Alho", "Cebola"],
+        instrucoes: "Cozinhe o feijão com as carnes e tempere a gosto. Sirva com couve e laranja.",
+        imagem: "images/feijoada.png",
+        categoria: "Prato Principal"
+    },
+    {
+        id: 6,
+        nome: "Pão de Queijo",
+        ingredientes: ["Polvilho azedo", "Queijo minas", "Ovo", "Leite", "Óleo", "Sal"],
+        instrucoes: "Misture todos os ingredientes até obter uma massa homogênea. Modele e asse.",
+        imagem: "images/pao-de-queijo.png",
+        categoria: "Lanche"
     }
 ];
